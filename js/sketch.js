@@ -1,21 +1,29 @@
-var fillColour;
+var fillColor,r,g,b;
 var x;
 var y;
+var play;
 
 function setup() {
-    var canvas = createCanvas(700, 700);
+    var canvas = createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent("p5container");
     background(0);
     x = width/2;
     y = height/2;
 
     play= false;
-    button = createButton("Play")
-    button.center(); 
+    button = createButton("play")
+    //button.position(window.innerwidth/2, window.innerHeight/2); 
     button.addClass('btn');  
     button.mousePressed(()=>{
         play = true;
-        button.hide();
+        //button.hide();
+    });
+    button = createButton("stop")
+    //button.position(window.innerwidth/2, window.innerheight/2); 
+    button.addClass('btn1');  
+    button.mousePressed(()=>{
+        play = false;
+        //button.hide();
     });
 }
 
@@ -27,7 +35,6 @@ function draw() {
     
     frameRate(10);
     fill(randColor());
-    
 
     //Random Walker
     if(play==true){
@@ -52,13 +59,13 @@ function draw() {
    
     
     
-    if(x>700){
+    if(x>window.innerWidth){
      x = x- 50;  
    }
     else if(x< 0){
      x = x+ 50;  
    }  
-    else if(y>700){
+    else if(y>window.innerHeight){
     y = y- 50;  
    }
     else if(y<0){
@@ -72,8 +79,8 @@ function draw() {
     g= Math.floor(random(255))
     b= Math.floor(random(255))
     
-    fillColour = color(r,g,b);
-    return fillColour;
+    fillColor = color(r,g,b);
+    return fillColor;
     
     
   }
